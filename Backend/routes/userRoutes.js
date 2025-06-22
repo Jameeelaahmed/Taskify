@@ -31,14 +31,6 @@ userRouter.post('/login', async (req, res) => {
     }
 });
 
-userRouter.get('/:id', authenticate, async (req, res) => {
-    try {
-        const user = await userService.getUserById(req.params.id);
-        res.send(user);
-    } catch (error) {
-        res.status(404).send({ message: 'User not found' });
-    }
-});
 
 userRouter.get('/email/:email', async (req, res) => {
     try {
@@ -50,11 +42,23 @@ userRouter.get('/email/:email', async (req, res) => {
     }
 });
 
+userRouter.get('/:id', authenticate, async (req, res) => {
+    try {
+        const user = await userService.getUserById(req.params.id);
+        res.send(user);
+    } catch (error) {
+        res.status(404).send({ message: 'User not found' });
+    }
+});
+
 userRouter.post('/', async (req, res) => {
     try {
         const newUser = await userService.addUser(req.body);
         res.status(201).send(newUser);
     } catch (error) {
+        if (error.message === 'User already exists') {
+            return res.status(409).send({ message: 'Email already registered' });
+        }
         res.status(500).send({ message: 'Error adding user', devMessage: error.message });
     }
 });
