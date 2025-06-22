@@ -1,16 +1,13 @@
-import { useLocation } from "react-router"
+import { useLocation } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { jwtDecode } from "jwt-decode";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { fetchUserBoards } from "../../store/board/BoardActions";
+import { fetchUserBoards } from '../../store/board/BoardActions'
 import styles from './Boards.module.css'
 import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
-import BoardCard from "../../Components/BoardCard/BoardCard";
-import {
-    cardVariants,
-    textVariants,
-} from "../../Components/UI/LandingAnimation";
+import BoardCard from "../../components/BoardCard/BoardCard";
+import { cardVariants, textVariants } from '../../ui/LandingAnimation'
 import noboard from '../../assets/noboards.png'
 function Boards() {
     const location = useLocation().pathname;
@@ -113,7 +110,6 @@ function Boards() {
                     )}
                 </div>
             )}
-
         </>
     )
 }

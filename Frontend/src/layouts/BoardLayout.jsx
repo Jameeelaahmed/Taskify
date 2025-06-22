@@ -1,20 +1,19 @@
-import { Outlet } from "react-router";
-import Sidebar from "../Components/Sidebar/Sidebar";
-import classes from './layout.module.css'
-import { useSelector } from "react-redux";
-export default function BoardLayout() {
+import styles from './layout.module.css'
+import Sidebar from '../components/Sidebar/Sidebar'
+import { useSelector } from 'react-redux'
+import { Outlet } from 'react-router';
+function BoardLayout() {
+    const collapseState = useSelector((state) => state.sidebarCollaps.collapsed);
+    return (
+        <div className={`${styles.layout_continer} ${collapseState ? styles.collapsed : ""}`}>
+            <div className={styles.sidebar}>
+                <Sidebar />
+            </div>
+            <div className={styles.outlit_container}>
+                <Outlet />
+            </div>
+        </div>
+    )
+}
 
-  const collapseState = useSelector((state) => state.sidebarCollaps.collapsed);
-
-  return (
-    <div className={`${classes.layout_continer} ${collapseState ? classes.collapsed : ""}`}>
-      <div className={classes.sidebar}>
-        <Sidebar />
-      </div>
-      <div className={classes.outlit_container}>
-        <Outlet />
-      </div>
-    </div>
-  );
-};
-
+export default BoardLayout

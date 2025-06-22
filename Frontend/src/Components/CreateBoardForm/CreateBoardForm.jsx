@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import AsyncSelect from "react-select/async";
-import SelectStyle from "../UI/SelectStyle";
-import { isNotEmpty } from "../../utils/validation";
-import styles from "./CreateBoardForm.module.css";
-import { loadUserOptions } from "../../utils/loadUserOptions";
+import SelectStyle from '../../ui/SelectStyle'
+import { isNotEmpty } from '../../helpers/validation'
+import styles from './CreateBoardForm.module.css'
+import { loadUserOptions } from '../../helpers/loadUserOptions'
 import { authFetch } from "../../helpers/authFetch";
 import { useDispatch } from "react-redux";
 import { fetchUserBoards } from "../../store/board/BoardActions";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
-
-export default function CreateBoardForm({ onClose, initialData = {}, isEdit = false, onSubmit }) {
+function CreateBoardForm({ onClose, initialData = {}, isEdit = false, onSubmit }) {
     const { t } = useTranslation();
     const boardTitleRef = useRef();
     const membersRef = useRef();
@@ -27,9 +26,6 @@ export default function CreateBoardForm({ onClose, initialData = {}, isEdit = fa
             }
         }
     }, [isEdit, initialData]);
-
-    console.log(fetchUserBoards);
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -79,7 +75,6 @@ export default function CreateBoardForm({ onClose, initialData = {}, isEdit = fa
             setIsSubmitting(false);
         }
     };
-
     return (
         <form onSubmit={handleSubmit} className={styles.form}>
             <p>{isEdit ? t("Edit Board") : t("Create Board")}</p>
@@ -123,5 +118,7 @@ export default function CreateBoardForm({ onClose, initialData = {}, isEdit = fa
                 </div>
             )}
         </form>
-    );
+    )
 }
+
+export default CreateBoardForm

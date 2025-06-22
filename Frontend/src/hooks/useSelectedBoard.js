@@ -5,27 +5,27 @@ import { setSelectedBoard } from "../store/selectedBoardSlice";
 import { useParams } from "react-router";
 
 export default function useSelectedBoard() {
-  const dispatch = useDispatch();
-  const { id } = useParams();
-  const selectedBoard = useSelector((state) => state.selectedBoard);
+    const dispatch = useDispatch();
+    const { id } = useParams();
+    const selectedBoard = useSelector((state) => state.selectedBoard);
 
-  useEffect(() => {
-    if (!selectedBoard || selectedBoard.id !== id) {
-      // Fetch the board data if not already available or mismatched
-      const fetchBoardData = async () => {
-        try {
-          const boardData = await getBoardById(id);
-          dispatch(setSelectedBoard(boardData));
-        } catch (error) {
-          console.error("Error fetching board data:", error);
+    useEffect(() => {
+        if (!selectedBoard || selectedBoard.id !== id) {
+            // Fetch the board data if not already available or mismatched
+            const fetchBoardData = async () => {
+                try {
+                    const boardData = await getBoardById(id);
+                    dispatch(setSelectedBoard(boardData));
+                } catch (error) {
+                    console.error("Error fetching board data:", error);
+                }
+            };
+            fetchBoardData();
         }
-      };
-      fetchBoardData();
-    }
-  }, [id, selectedBoard, dispatch]);
+    }, [id, selectedBoard, dispatch]);
 
-  return {
-    selectedBoard,
-    boardId: id || selectedBoard?.id || null,
-  };
+    return {
+        selectedBoard,
+        boardId: id || selectedBoard?.id || null,
+    };
 }

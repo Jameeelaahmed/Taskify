@@ -51,6 +51,15 @@
   box-shadow: var(--hover-shadow);
 }
 
+.boardHeaderCard h1 {
+  width: 250px; /* or any fixed width you prefer */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
 .boardMeta {
   display: flex;
   justify-content: space-between;

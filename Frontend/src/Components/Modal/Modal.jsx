@@ -1,7 +1,7 @@
 import styles from './Modal.module.css'
-import { createPortal } from "react-dom";
-
+import { createPortal } from 'react-dom'
 import { useRef, useImperativeHandle, forwardRef } from 'react'
+
 const Modal = forwardRef(function Modal(props, ref) {
     const modalRef = useRef();
     useImperativeHandle(ref, () => ({
@@ -19,4 +19,4 @@ const Modal = forwardRef(function Modal(props, ref) {
     )
 })
 
-export default Modal;
+export default Modal

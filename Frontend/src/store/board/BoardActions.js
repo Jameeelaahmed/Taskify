@@ -1,7 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { api } from '../../utils/api';
 import { authFetch } from '../../helpers/authFetch';
-
 export const fetchUserBoards = createAsyncThunk(
     'boards/fetchUserBoards',
     async (_, { rejectWithValue }) => {
@@ -9,7 +7,6 @@ export const fetchUserBoards = createAsyncThunk(
             const response = await authFetch('/boards', {
                 method: 'GET',
             });
-            console.log(response);
 
             return response;
         } catch (error) {

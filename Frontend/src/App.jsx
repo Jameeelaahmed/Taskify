@@ -1,11 +1,13 @@
-import { Provider } from "react-redux";
-import { ThemeProvider } from "./context/ThemeContext";
-import AppRoutes from "./routes/routes";
-import store from "./store";
-import { ToastContainer } from 'react-toastify';
+import './App.css'
+import { Provider } from 'react-redux'
+import { ThemeProvider } from './context/ThemeContext'
+import AppRoutes from './routes/routes'
+import store from './store/index'
+import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css'
 function App() {
+
   return (
     <>
       <ThemeProvider>
@@ -15,7 +17,7 @@ function App() {
         </Provider>
       </ThemeProvider>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

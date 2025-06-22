@@ -24,7 +24,8 @@
   border-radius: var(--border);
 }
 
-.tableHead,.tableBodyRow {
+.tableHead,
+.tableBodyRow {
   background: var(--main-color);
 }
 /* .tableBodyRow :hover {

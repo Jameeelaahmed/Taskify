@@ -30,14 +30,21 @@
     transform: translateY(0);
   }
 }
-
-@media (min-width: 992px) and (max-width: 1200px) {
-  .widthGrow {
-    width: 58%;
+@media (max-width: 512px) {
+  .modal {
+    width: 360px;
+    min-width: unset;
+    max-width: 98vw;
   }
 }
 @media (max-width: 991px) {
   .widthGrow {
     width: 80%;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .widthGrow {
+    width: 58%;
   }
 }
